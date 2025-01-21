@@ -1,0 +1,104 @@
+/** @format */
+
+.uppist {
+  padding: 40px 100px;
+}
+
+.container {
+  display: flex;
+  padding: 70px;
+  gap: 55px;
+}
+
+.container h3 {
+  font-family: "Source Sans 3";
+  font-size: 30px;
+  margin: 0;
+  font-weight: 700;
+  color: hsla(34, 94%, 54%, 1);
+}
+
+.container h2 {
+  font-size: 45px;
+  font-weight: 700;
+  color: hsla(293, 78%, 31%, 1);
+  font-family: "Inter";
+  margin: 0;
+}
+
+.container p {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 400;
+  color: hsla(0, 0%, 17%, 1);
+  font-family: "Source Sans 3";
+}
+
+.container2 {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uppist svg {
+  width: 149px;
+  height: 43px;
+}
+
+.form {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form button {
+  padding: 18px 56px;
+  background-color: hsla(34, 94%, 54%, 1);
+  text-transform: uppercase;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  width: fit-content;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: "Inter";
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 740px) {
+  .uppist {
+    padding: 30px;
+  }
+  .uppist svg {
+    width: 68px;
+    height: 19px;
+  }
+
+  .container {
+    flex-direction: column-reverse;
+    gap: 20px;
+    padding: 24px;
+  }
+
+  .container2 h3 {
+    font-size: 18px;
+  }
+
+  .container2 h2 {
+    font-size: 24px;
+  }
+
+  .container2 p {
+    font-size: 16px;
+  }
+
+  .form button {
+    font-size: 14px;
+  }
+
+  .ebook svg {
+    width: 312px;
+    height: 420px;
+  }
+}

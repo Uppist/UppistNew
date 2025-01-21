@@ -17231,28 +17231,28 @@ var _0 = N0();
 const b0 = Md(_0),
   A0 = [
     {
-      Image: "./review1.png",
+      Image: "review1.png",
       Name: "Mavis Izegbune",
       Title: "Founder, First and Last Wellness",
       Testimonial:
         "Our company's rebranding was a game-changer, thanks to this amazing design agency. The logo they created perfectly captures our vision, and the branding materials were stunning!",
     },
     {
-      Image: "./review2.png",
+      Image: "review2.png",
       Name: "Olufeyisayo Soewu",
       Title: "C.E.O, Squaredlab Advisory Services",
       Testimonial:
         "Their team took our social media presence to the next level! The creative content and strategic management helped us connect with our audience in ways we never imagined.",
     },
     {
-      Image: "./review3.png",
+      Image: "review3.png",
       Name: "Chinedu Okafor",
       Title: "C.E.O, The BroomApp",
       Testimonial:
         "From our new logo to the overall branding, their work exceeded our expectations. The designs are sleek, modern, and truly represent who we are as a company.",
     },
     {
-      Image: "./review4.png",
+      Image: "review4.png",
       Name: "Adaobi Eze",
       Title: "Operations Director, BrightPath Enterprises",
       Testimonial:
@@ -17300,11 +17300,7 @@ function M0() {
               {
                 className: "businessowner",
                 children: [
-                  d.jsx("img", {
-                    className: "imageowner",
-                    src: a.Image,
-                    alt: a.Name,
-                  }),
+                  d.jsx("img", { className: "imageowner", src: a.Image }),
                   d.jsxs("div", {
                     className: "name",
                     children: [
