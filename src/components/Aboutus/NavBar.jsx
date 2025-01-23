@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import "../../style.css";
 import uppist from "../../assets/uppist.png";
 import { Link } from "react-router-dom";
+import Uppist from "../Ebook/Uppist";
 
 export default function NavBar() {
   const [isSidebarVisible, setIsSidebarVisible] = useState(false);
@@ -24,8 +25,8 @@ export default function NavBar() {
   return (
     <header className='firstsection'>
       <nav className='nav'>
-        <Link to='/'>
-          <img src={uppist} alt='logo' className='uppist-logo' />
+        <Link to='/' className='uppist'>
+          <Uppist />
         </Link>
 
         <ul className='nav-ul'>

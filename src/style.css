@@ -10,6 +10,11 @@
   transition: opacity 0.4s ease-in-out;
 }
 
+.uppist {
+  width: 149px;
+  height: 43px;
+}
+
 .fade-out {
   opacity: 0;
 }
@@ -1065,6 +1070,7 @@ form {
   gap: 61px;
 }
 
+.clients svg,
 .clients img {
   width: 150px;
 }

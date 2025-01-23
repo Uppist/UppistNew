@@ -2,10 +2,10 @@
 
 import React from "react";
 import jessie from "../../assets/desktop/JZB.png";
-import fl from "../../assets/desktop/F&L.png";
-import sql from "../../assets/desktop/SASL.png";
-import luround from "../../assets/desktop/luroundlogo.png";
+import sql from "../../assets/squareLab.png";
+import luround from "../../assets/LUROUND1.png";
 import broom from "../../assets/desktop/broomApp.png";
+import FL from "../SVG/FL";
 
 export default function Clients() {
   return (
@@ -15,7 +15,7 @@ export default function Clients() {
       </label>
       <div>
         <img src={jessie} alt='' />
-        <img src={fl} alt='' />
+        <FL />
         <img src={sql} alt='' />
         <img src={luround} alt='' />
         <img src={broom} alt='' />

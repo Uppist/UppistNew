@@ -4,6 +4,7 @@ import React, { useEffect } from "react";
 import uppist from "../../assets/desktop/uppist2.jpg";
 import { Link } from "react-router-dom";
 import "../../style.css";
+import UppistWhite from "../Ebook/UppistWhite";
 export default function Footer() {
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -114,7 +115,7 @@ export default function Footer() {
       <div className='footer-end'>
         <div className='footer-img'>
           <Link to='/'>
-            <img src={uppist} alt='' />
+            <UppistWhite />{" "}
           </Link>
 
           <label>powering enterprise with breakthrough technologies. </label>
