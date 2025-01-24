@@ -3,20 +3,13 @@
 import React, { useState } from "react";
 import styles from "./Ebook.module.css";
 
-export default function Form({ Submit }) {
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    phone: "",
-  });
-
+export default function Form({ Submit, LoginDetail, logindetail }) {
   const [errors, setErrors] = useState({});
   const [submittedData, setSubmittedData] = useState(false);
 
   function handleInputChange(e) {
     const { name, value } = e.target;
-    setFormData((prev) => ({
+    setSubmittedData((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -27,18 +20,18 @@ export default function Form({ Submit }) {
 
     const newErrors = {};
 
-    if (!formData.firstName) {
-      newErrors.firstName = "First Name is required.";
+    if (!logindetail.first_name) {
+      newErrors.first_name = "First Name is required.";
     }
-    if (!formData.lastName) {
-      newErrors.lastName = "Last Name is required.";
+    if (!logindetail.last_name) {
+      newErrors.last_name = "Last Name is required.";
     }
 
-    if (!formData.email) {
+    if (!logindetail.email) {
       newErrors.email = "Email Address is required.";
     }
-    if (!formData.phone) {
-      newErrors.phone = "Phone Number is required.";
+    if (!logindetail.phone_number) {
+      newErrors.phone_number = "Phone Number is required.";
     }
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
@@ -53,23 +46,23 @@ export default function Form({ Submit }) {
           <div className={styles.inputField}>
             <input
               type='text'
-              name='firstName'
+              name='first_name'
               placeholder='First Name'
-              value={formData.firstName}
-              onChange={handleInputChange}
+              value={logindetail.first_name}
+              onChange={(e) => LoginDetail(e)}
             />
-            {submittedData === false && errors.firstName && (
-              <p className={styles.error}>{errors.firstName}</p>
+            {submittedData === false && errors.first_name && (
+              <p className={styles.error}>{errors.first_name}</p>
             )}
           </div>
 
           <div className={styles.inputField}>
             <input
               type='text'
-              name='lastName'
+              name='last_name'
               placeholder='Last Name'
-              value={formData.lastName}
-              onChange={handleInputChange}
+              value={logindetail.last_name}
+              onChange={(e) => LoginDetail(e)}
             />
             {submittedData === false && errors.lastName && (
               <p className={styles.error}>{errors.lastName}</p>
@@ -81,8 +74,8 @@ export default function Form({ Submit }) {
               type='email'
               name='email'
               placeholder='Email Address'
-              value={formData.email}
-              onChange={handleInputChange}
+              value={logindetail.email}
+              onChange={(e) => LoginDetail(e)}
             />
             {errors.email && <p className={styles.error}>{errors.email}</p>}
           </div>
@@ -90,13 +83,13 @@ export default function Form({ Submit }) {
           <div className={styles.inputField}>
             <input
               type='text'
-              name='phone'
-              placeholder='Phone Number'
-              value={formData.phone}
-              onChange={handleInputChange}
+              name='phone_number'
+              placeholder='phone number'
+              value={logindetail.phone_number}
+              onChange={(e) => LoginDetail(e)}
             />
-            {submittedData === false && errors.phone && (
-              <p className={styles.error}>{errors.phone}</p>
+            {submittedData === false && errors.phone_number && (
+              <p className={styles.error}>{errors.phone_number}</p>
             )}
           </div>
 

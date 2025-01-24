@@ -12,11 +12,11 @@ export default function App() {
     <BrowserRouter>
       <div>
         <Routes>
-          <Route path='/UppistNew' element={<AboutUs />} />
+          <Route path='/' element={<AboutUs />} />
           <Route path='headove' element={<HeadoveSection />} />
           <Route path='contact' element={<Contactus />} />
           <Route path='stunlearn' element={<StunLearn />} />
-          <Route path='/UppistNew/ebook' element={<Ebook />} />
+          <Route path='ebook' element={<Ebook />} />
         </Routes>
       </div>
     </BrowserRouter>

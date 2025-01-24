@@ -6,12 +6,40 @@ import styles from "./Ebook.module.css";
 import EbookSvg from "./EbookSvg";
 import Form from "./Form";
 import Thankyou from "./Thankyou";
+import axios from "axios";
 
 export default function Ebook() {
+  /*API Response */
+
+  const [logindetail, setLogindetail] = useState({
+    email: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+  });
+  const data = {
+    email: logindetail.email,
+    first_name: logindetail.first_name,
+    last_name: logindetail.last_name,
+    phone_number: logindetail.phone_number,
+  };
+  function LoginDetail(e) {
+    setLogindetail({ ...logindetail, [e.target.name]: e.target.value });
+  }
+
   const [isNext, setIsNext] = useState(false);
 
   function Submit() {
     setIsNext(true);
+
+    axios
+      .post(
+        "https://luround-api-7ad1326c3c1f.herokuapp.com/api/download-ebook",
+        data
+      )
+      .then((res) => {
+        console.log("response", res);
+      });
   }
   return (
     <section>
@@ -42,7 +70,11 @@ export default function Ebook() {
               <p>
                 Complete the form to receive your <b>free guide!</b>
               </p>
-              <Form Submit={Submit} />
+              <Form
+                Submit={Submit}
+                logindetail={logindetail}
+                LoginDetail={LoginDetail}
+              />
             </div>
 
             <div className={styles.ebook}>
