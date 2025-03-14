@@ -10,7 +10,7 @@ import Cobalt from "../SVG/Cobalt";
 import Ireti from "../SVG/Ireti";
 import { Link } from "react-router-dom";
 import svg from "../SVG/Svg.json";
-import Jzb from "../SVG/jzb";
+import Jzb from "../SVG/Jzb";
 
 export default function Clients() {
   const svgComponents = {
