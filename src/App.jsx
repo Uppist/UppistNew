@@ -9,7 +9,7 @@ import Ebook from "./components/Ebook/Ebook";
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div>
         <Routes>
           <Route path='/' element={<AboutUs />} />
@@ -19,6 +19,6 @@ export default function App() {
           <Route path='ebook' element={<Ebook />} />
         </Routes>
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }

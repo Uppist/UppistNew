@@ -15,11 +15,17 @@ export default function ImageSection() {
 
       <div className='img-text stun-text'>
         <div>
-          <StunLearnSvg />
-          <p>Growth Is Here</p>
+          {/* <StunLearnSvg /> */}
+          <h3>
+            <span>Growth</span> is Here
+          </h3>
+          <p>
+            We provide the necessary tools and environment to foster career and
+            business growth for ambitious professionals and entrepreneurs.
+          </p>
         </div>
-        <span>
-          <Link to='/contact'>
+        <Link to='/contact'>
+          <button>
             Contact Us
             <svg
               className='contact-svg'
@@ -37,8 +43,8 @@ export default function ImageSection() {
                 strokeLinejoin='round'
               />
             </svg>
-          </Link>
-        </span>
+          </button>
+        </Link>
       </div>
     </div>
   );

@@ -11,12 +11,12 @@ import Unlock from "../Aboutus/Unlock";
 export default function Headove() {
   return (
     <div className='headove'>
-      <ImageSection />
+      {/* <ImageSection /> */}
       <AboutHeadove />
       <Core />
       <Clients />
-      <Testimonials />
-      <Unlock />
+      {/* <Testimonials /> */}
+      {/* <Unlock /> */}
     </div>
   );
 }

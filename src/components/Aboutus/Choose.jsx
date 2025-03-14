@@ -1,7 +1,7 @@
 /** @format */
 
 import React from "react";
-import image5 from "../../assets/desktop/image5.png";
+import image5 from "../../assets/desktop/picture2.png";
 
 export default function Choose() {
   return (

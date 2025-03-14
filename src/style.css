@@ -31,7 +31,7 @@
   font-size: 48px;
   font-weight: 700;
   font-family: "Inter";
-  color: hsla(0, 0%, 17%, 1);
+  color: hsla(293, 78%, 31%, 1);
 }
 
 .slick-arrow.slick-prev {
@@ -190,8 +190,8 @@ a {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 8px;
   border-radius: 8px;
-  width: 150px;
-  margin-left: 90px;
+  width: 250px;
+  margin-left: 50px;
   margin-top: -15px;
 }
 
@@ -276,10 +276,10 @@ a {
   margin: 0;
 }
 
-.img-text span,
+.img-text button,
 .empower span {
   cursor: pointer;
-  padding: 18px 56px;
+  padding: 18px 20px;
   background: hsla(34, 94%, 54%, 1);
   color: white;
   width: 200px;
@@ -287,6 +287,12 @@ a {
   text-transform: uppercase;
   font-size: 18px;
   font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  font-family: "Inter";
 }
 
 .submit {
@@ -307,6 +313,7 @@ a {
 
 .img-text p {
   font-family: "Source Sans 3";
+  width: 559px;
 }
 
 .contact-svg {
@@ -428,12 +435,25 @@ a {
 .headove-container h2,
 .luround-container h2,
 .stunlearn-container h2 {
+  position: relative;
   font-weight: 600;
   font-family: "Source Sans 3";
   color: hsla(0, 0%, 17%, 1);
-  border-bottom: 3px solid hsla(34, 94%, 54%, 1);
-  border-radius: 3px;
+  /* border-bottom: 3px solid hsla(34, 94%, 54%, 1); */
+  /* border-radius: 3px; */
+  /* width: 80px; */
+}
+
+.headove-container h2::before,
+.luround-container h2::before,
+.stunlearn-container h2::before {
+  position: absolute;
+  content: "";
   width: 80px;
+  height: 3px;
+  background-color: hsla(34, 94%, 54%, 1);
+  border-radius: 3px;
+  top: 33px;
 }
 
 .headove-container p,
@@ -540,7 +560,7 @@ a {
 
 .img-choose {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 6fr;
   padding: 0px 40px 0px 0px;
 }
 
@@ -964,6 +984,7 @@ form {
   justify-content: center;
   gap: 32px;
   margin-top: 120px;
+  padding: 50px;
 }
 
 .about-headove div {
@@ -984,7 +1005,7 @@ form {
 .text-about {
   margin: 0;
   font-size: 48px;
-  color: hsla(0, 0%, 17%, 1);
+  color: hsla(293, 78%, 31%, 1);
   font-weight: 700;
   font-family: "Inter";
 }
@@ -993,8 +1014,35 @@ form {
   display: none;
 }
 
-.text-about label {
-  font-weight: 500;
+.text-about-desktop {
+  background: linear-gradient(
+    90deg,
+    hsla(300, 100%, 25%, 1),
+    hsla(267, 100%, 25%, 1)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 900;
+}
+
+.about-headove div button {
+  display: flex;
+  align-items: center;
+  text-transform: uppercase;
+  gap: 8px;
+  padding: 18px 56px;
+  border-radius: 8px;
+  border: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  font-family: "Inter";
+  background: linear-gradient(
+    45deg,
+    hsla(300, 100%, 25%, 1),
+    hsla(267, 100%, 25%, 1)
+  );
+  width: 284px;
 }
 
 .core {
@@ -1064,15 +1112,49 @@ form {
   margin-top: 100px;
 }
 
-.clients div {
+.clients > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  gap: 32px;
+  padding: 100px;
+}
+
+.svgs {
+  box-shadow: 0px 5px 7px hsla(0, 0%, 0%, 0.04);
+  padding: 24px 24px 48px 24px;
+  width: 345px;
+}
+
+.svgs div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.svgs div span {
   display: flex;
   align-items: center;
-  gap: 61px;
+  gap: 4px;
+  color: hsla(293, 78%, 31%, 1);
+  font-family: "Source Sans 3";
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.svgs div span p {
+  margin: 0;
+  color: hsla(0, 0%, 17%, 1);
+  font-weight: 400;
 }
 
 .clients svg,
 .clients img {
-  width: 150px;
+  width: 250px;
+}
+
+.clients svg {
+  height: 74px;
 }
 
 /*StunLearn Section*/
@@ -1105,15 +1187,21 @@ form {
   font-family: "Inter";
 }
 
-.about-stunlearn {
-  padding: 0px 50px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  place-items: center;
+.img-text h3 {
+  margin: 0;
+  color: hsla(0, 0%, 17%, 1);
+  font-weight: 700;
+  font-size: 60px;
 }
 
-.mission-stunlearn {
+.img-text h3 span {
+  font-size: 60px;
+  font-weight: 900;
+  color: hsla(34, 94%, 54%, 1) !important;
+  background: none !important;
+}
+
+.about-stunlearn {
   padding: 0px 50px;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1125,24 +1213,44 @@ form {
 .stun-mission {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 145px;
   font-family: "Inter";
+  padding: 100px;
+  align-items: center;
 }
 
-.stun-about h2,
-.stun-mission h2 {
+.img-div {
+  display: flex;
+  align-items: center;
+  gap: 110px;
+}
+
+.img-div:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.text-div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.text-div h2 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-size: 48px;
-  font-weight: 500;
-  color: hsla(241, 75%, 13%, 1);
+  color: hsla(293, 78%, 31%, 1);
   margin: 0;
+  font-weight: 500;
 }
 
-.stun-about h2 span {
+.text-div h2 span {
   font-weight: 700;
 }
 
 .stun-about p,
-.stun-mission p {
+.text-div > span {
   margin: 0;
   font-size: 24px;
   font-weight: 400;
@@ -1150,13 +1258,18 @@ form {
   color: hsla(0, 0%, 17%, 1);
 }
 
-.stun-about p {
-  width: 645px;
-}
-
-.stun-about ul {
+.text-div ul {
   margin: 5px;
   font-weight: 400;
+
+  font-size: 24px;
+  font-weight: 400;
+  font-family: "Source Sans 3";
+  color: hsla(0, 0%, 17%, 1);
+}
+
+.text-div ul li::marker {
+  color: hsla(34, 94%, 54%, 1);
 }
 
 .teach-mode {
@@ -1323,12 +1436,12 @@ form {
 
   .img-text p {
     font-size: 16px;
+    width: 271px;
   }
 
   .img-text span,
   .empower span {
     width: 142px;
-    padding: 12px 28px;
     font-size: 16px;
   }
 
@@ -1482,7 +1595,7 @@ form {
   }
 
   .imagesection img {
-    margin-top: 255px;
+    margin-top: 60px;
   }
   .contact-us {
     font-size: 16px;
@@ -1651,6 +1764,10 @@ form {
     border: 0;
   }
 
+  .stunlearn-unlock {
+    margin-top: 270px;
+  }
+
   /*Contact Section*/
   .touch-form {
     display: flex;
@@ -1660,7 +1777,6 @@ form {
 
   .get-in-touch {
     padding: 30px 20px;
-    background: url("../src/assets/mobile/background.png") no-repeat;
     background-position-y: -15px;
     background-position-x: 275px;
   }
@@ -1705,10 +1821,10 @@ form {
   }
 
   .about-headove {
-    display: grid;
-    place-items: center;
     margin-top: 10px;
     gap: 10px;
+    flex-direction: column;
+    padding: 0;
   }
 
   .uppist-logo,
@@ -1761,9 +1877,16 @@ form {
 
   .text-about-mobile {
     display: block;
-    font-size: 20px;
-    color: hsla(0, 0%, 17%, 1);
-    font-weight: 700;
+    font-size: 32px;
+    background: linear-gradient(
+      90deg,
+      hsla(300, 100%, 25%, 1),
+      hsla(267, 100%, 25%, 1)
+    );
+    text-align: center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
   }
 
   .text-about-mobile label {
@@ -1782,10 +1905,25 @@ form {
     margin-top: 50px;
   }
 
-  .clients div {
+  .clients > div {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
+    grid-template-columns: 1fr;
+    gap: 51px;
+    padding: 0;
+  }
+
+  .uppist {
+    width: 68px;
+  }
+  .svgs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 312px;
+  }
+  .svgs hr {
+    width: -webkit-fill-available;
+    border: 1px solid hsla(0, 11%, 91%, 1);
   }
 
   .clients div img {
@@ -1834,12 +1972,40 @@ form {
     text-align: center;
   }
 
-  .stun-text svg {
-    width: 208px;
+  .img-text h3 {
+    font-size: 32px;
+  }
+
+  .img-text h3 span {
+    font-size: 32px;
   }
 
   .stun-text p {
     margin: 0;
+  }
+
+  .img-div {
+    flex-direction: column-reverse;
+    gap: 20px;
+    align-items: baseline;
+  }
+
+  .img-div:nth-child(odd) {
+    flex-direction: column-reverse;
+    gap: 20px;
+  }
+
+  .img-div img {
+    width: 312px;
+  }
+
+  .text-div ul {
+    padding: 0 24px;
+    margin: 0;
+  }
+
+  .text-div li {
+    font-size: 16px;
   }
 
   .about-stunlearn,
@@ -1875,7 +2041,8 @@ form {
   }
 
   .stun-mission {
-    gap: 0;
+    gap: 70px;
+    padding: 50px;
   }
 
   .stun-about h2,
@@ -1888,17 +2055,18 @@ form {
 
   .stun-mission h2 {
     text-align: center;
-    top: -330px;
+    font-size: 20px;
+    gap: 4px;
   }
 
-  .stunlearn-unlock {
-    margin-top: 225px;
+  .text-div > span {
+    font-size: 16px;
   }
 
   .testimonials {
     font-size: 20px;
     gap: 10px;
-    margin-bottom: -230px;
+    /* margin-bottom: -230px; */
   }
 
   .slick-track {
@@ -1951,9 +2119,9 @@ form {
   .connect svg {
     width: 30px;
   }
-  .desktopchoose {
+  /* .desktopchoose {
     width: 360px;
-  }
+  } */
 
   .choose label {
     font-size: 30px;

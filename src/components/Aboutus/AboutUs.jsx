@@ -8,6 +8,8 @@ import AboutSection from "./AboutSection";
 import ValueSection from "./ValueSection";
 import Unlock from "./Unlock";
 import Choose from "./Choose";
+import Clients from "../Headove/Clients";
+import Testimonials from "../Headove/Testimonials";
 
 export default function AboutUs() {
   useEffect(() => {
@@ -18,8 +20,13 @@ export default function AboutUs() {
       <NavBar />
       <AboutSection />
       <ValueSection />
-      <Unlock className='stunlearn-unlock' />
+      <div className='stunlearn-unlock'>
+        {" "}
+        <Unlock />
+      </div>
       <Choose />
+      <Clients />
+      <Testimonials />
       <Footer />
     </div>
   );

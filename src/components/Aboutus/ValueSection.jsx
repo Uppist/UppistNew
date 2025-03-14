@@ -17,7 +17,7 @@ export default function ValueSection() {
     <section className='section-value'>
       <label>
         {" "}
-        <span>Our</span> Brands
+        <span>Our</span> Services
       </label>
       <div className='brand-container'>
         <div>
@@ -26,7 +26,7 @@ export default function ValueSection() {
 
           <div className='headove-container'>
             <div>
-              <h2>Headove</h2>
+              <h2>Creative and Marketing</h2>
               <p>
                 Affordable creative and marketing services for small businesses.
               </p>
@@ -98,7 +98,7 @@ export default function ValueSection() {
 
           <div className='stunlearn-container'>
             <div>
-              <h2>Stunlearn</h2>
+              <h2>Education</h2>
               <p>Training institute for professionals and entrepreneurs. </p>
             </div>
 

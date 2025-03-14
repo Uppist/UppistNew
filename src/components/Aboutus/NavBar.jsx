@@ -58,14 +58,14 @@ export default function NavBar() {
               <ul>
                 <Link to='/headove'>
                   {" "}
-                  <li>Headove</li>
+                  <li>Creative and Marketing</li>
                 </Link>
                 <Link to='https://www.luround.com'>
                   {" "}
                   <li>Luround</li>
                 </Link>
                 <Link to='/stunlearn'>
-                  <li>StunLearn</li>
+                  <li>Education</li>
                 </Link>
               </ul>
             </div>
@@ -143,7 +143,7 @@ export default function NavBar() {
               <li className='sidebar-list'>Home</li>
             </Link>
             <li className='sidebar-list company' onClick={Dropdown}>
-              Company
+              Services
               <svg
                 className='company-svg'
                 width='24'
@@ -165,14 +165,14 @@ export default function NavBar() {
               <ul className='dropdown-company-mobile'>
                 <Link to='/headove'>
                   {" "}
-                  <li>Headove</li>
+                  <li>Creative and Marketing</li>
                 </Link>
                 <Link to='https://www.luround.com'>
                   {" "}
                   <li>Luround</li>
                 </Link>
                 <Link to='/stunlearn'>
-                  <li>StunLearn</li>
+                  <li>Education</li>
                 </Link>
               </ul>
             )}

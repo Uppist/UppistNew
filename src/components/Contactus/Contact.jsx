@@ -3,7 +3,7 @@
 /** @format */
 
 import React, { useState, useEffect, useRef } from "react";
-import location from "../../assets/desktop/location.png";
+import location from "../../assets/desktop/contact.png";
 // import location2 from "../../assets/mobile/map.png";
 import emailjs from "@emailjs/browser";
 import "react-toastify/dist/ReactToastify.css";

@@ -1,0 +1,23 @@
+[
+  {
+    "image": "image1.png",
+    "title": "Our",
+    "title2": "Mission",
+    "text": "Our mission is to be a forefront education brand that enhances productivity and inspires passion."
+  },
+  {
+    "image": "image2.png",
+    "title": "What",
+    "title2": "We Teach",
+    "li1": "Business Growth",
+    "li2": "Leadership Development",
+    "li3": "Professional Skills Development"
+  },
+  {
+    "image": "image3.png",
+    "title2": "Mode",
+    "li1": "Workshops",
+    "li2": "Programs",
+    "li3": "Courses"
+  }
+]

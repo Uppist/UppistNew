@@ -3,7 +3,7 @@
 import React from "react";
 import "../../style.css";
 
-import image1 from "../../assets/desktop/image1.png";
+import image1 from "../../assets/desktop/picture1.png";
 import image2 from "../../assets/desktop/image2.png";
 import { Link } from "react-router-dom";
 
