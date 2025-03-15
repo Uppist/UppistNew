@@ -132,14 +132,14 @@ export default function Footer() {
             </Link> */}
             <Link to='/headove'>
               {" "}
-              <li>Headove</li>
+              <li>Creative and Marketing</li>
             </Link>
             <Link to='https://www.luround.com'>
               {" "}
               <li>Luround</li>
             </Link>
             <Link to='/stunlearn'>
-              <li>StunLearn</li>
+              <li>Education</li>
             </Link>
           </ul>
         </div>
@@ -157,7 +157,7 @@ export default function Footer() {
         <label>Connect with us</label>
         <ul>
           <li>
-            <Link to=''>
+            <Link to='https://web.facebook.com/Uppist'>
               <svg
                 width='36'
                 height='36'
@@ -225,60 +225,62 @@ export default function Footer() {
             </Link>
           </li>
           <li>
-            <svg
-              width='36'
-              height='36'
-              viewBox='0 0 36 36'
-              fill='none'
-              xmlns='http://www.w3.org/2000/svg'
-            >
-              <g clipPath='url(#clip0_83_701)'>
-                <rect
-                  x='-0.000732422'
-                  width='36'
-                  height='36'
-                  rx='5'
-                  fill='#561D5E'
-                />
-                <g clipPath='url(#clip1_83_701)'>
+            <Link to='https://www.linkedin.com/company/uppisthq/people/?viewAsMember=true'>
+              <svg
+                width='36'
+                height='36'
+                viewBox='0 0 36 36'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <g clipPath='url(#clip0_83_701)'>
                   <rect
                     x='-0.000732422'
                     width='36'
                     height='36'
                     rx='5'
-                    fill='#F2F1F2'
-                  />
-                  <path
-                    fillRule='evenodd'
-                    clipRule='evenodd'
-                    d='M28.9993 29H24.7993V21.651C24.7993 19.635 23.9099 18.5103 22.315 18.5103C20.5793 18.5103 19.5493 19.6823 19.5493 21.651V29H15.3493V15.35H19.5493V16.885C19.5493 16.885 20.867 14.5728 23.8364 14.5728C26.8069 14.5728 28.9993 16.3854 28.9993 20.136V29ZM10.5634 13.1669C9.14692 13.1669 7.99927 12.0099 7.99927 10.583C7.99927 9.15706 9.14692 8 10.5634 8C11.9788 8 13.1264 9.15706 13.1264 10.583C13.1275 12.0099 11.9788 13.1669 10.5634 13.1669ZM7.99927 29H13.2493V15.35H7.99927V29Z'
                     fill='#561D5E'
                   />
+                  <g clipPath='url(#clip1_83_701)'>
+                    <rect
+                      x='-0.000732422'
+                      width='36'
+                      height='36'
+                      rx='5'
+                      fill='#F2F1F2'
+                    />
+                    <path
+                      fillRule='evenodd'
+                      clipRule='evenodd'
+                      d='M28.9993 29H24.7993V21.651C24.7993 19.635 23.9099 18.5103 22.315 18.5103C20.5793 18.5103 19.5493 19.6823 19.5493 21.651V29H15.3493V15.35H19.5493V16.885C19.5493 16.885 20.867 14.5728 23.8364 14.5728C26.8069 14.5728 28.9993 16.3854 28.9993 20.136V29ZM10.5634 13.1669C9.14692 13.1669 7.99927 12.0099 7.99927 10.583C7.99927 9.15706 9.14692 8 10.5634 8C11.9788 8 13.1264 9.15706 13.1264 10.583C13.1275 12.0099 11.9788 13.1669 10.5634 13.1669ZM7.99927 29H13.2493V15.35H7.99927V29Z'
+                      fill='#561D5E'
+                    />
+                  </g>
                 </g>
-              </g>
-              <defs>
-                <clipPath id='clip0_83_701'>
-                  <rect
-                    x='-0.000732422'
-                    width='36'
-                    height='36'
-                    rx='5'
-                    fill='white'
-                  />
-                </clipPath>
-                <clipPath id='clip1_83_701'>
-                  <rect
-                    width='36'
-                    height='36'
-                    fill='white'
-                    transform='translate(-0.000732422)'
-                  />
-                </clipPath>
-              </defs>
-            </svg>
+                <defs>
+                  <clipPath id='clip0_83_701'>
+                    <rect
+                      x='-0.000732422'
+                      width='36'
+                      height='36'
+                      rx='5'
+                      fill='white'
+                    />
+                  </clipPath>
+                  <clipPath id='clip1_83_701'>
+                    <rect
+                      width='36'
+                      height='36'
+                      fill='white'
+                      transform='translate(-0.000732422)'
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </Link>
           </li>
           <li>
-            <Link to=''>
+            <Link to='https://www.instagram.com/uppisthq/'>
               <svg
                 width='36'
                 height='36'
