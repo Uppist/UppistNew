@@ -116,7 +116,7 @@ export default function NavBar() {
         >
           <div className='image-close'>
             <Link to='/'>
-              <img className='uppist-logo' src={uppist} />
+              <img className='uppist-logo' onClick={onClose} src={uppist} />
             </Link>
 
             <a className='dropdown-close' id='sidebar-close' onClick={onClose}>
@@ -140,7 +140,9 @@ export default function NavBar() {
 
           <ul className='sidebar-menu'>
             <Link to='/'>
-              <li className='sidebar-list'>Home</li>
+              <li className='sidebar-list' onClick={onClose}>
+                Home
+              </li>
             </Link>
             <li className='sidebar-list company' onClick={Dropdown}>
               Services
@@ -163,7 +165,7 @@ export default function NavBar() {
             </li>
             {isDropdown && (
               <ul className='dropdown-company-mobile'>
-                <Link to='/headove'>
+                <Link to='/headove' onClick={onClose}>
                   {" "}
                   <li>Creative and Marketing</li>
                 </Link>
@@ -171,13 +173,13 @@ export default function NavBar() {
                   {" "}
                   <li>Luround</li>
                 </Link>
-                <Link to='/stunlearn'>
+                <Link to='/stunlearn' onClick={onClose}>
                   <li>Education</li>
                 </Link>
               </ul>
             )}
 
-            <Link to='/contact'>
+            <Link to='/contact' onClick={onClose}>
               <li className='sidebar-contact'>Contact Us</li>
             </Link>
           </ul>

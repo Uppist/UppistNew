@@ -68,7 +68,7 @@ export default function ValueSection() {
                 providers.{" "}
               </p>
             </div>
-            <Link to='/luround'>
+            <Link to='https://www.luround.com'>
               <button>
                 Learn More{" "}
                 <svg

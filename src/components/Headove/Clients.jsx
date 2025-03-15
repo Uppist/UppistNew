@@ -39,7 +39,7 @@ export default function Clients() {
                 {data.servicetype}
                 <p>{data.type}</p>
               </span>
-              <Link to={data.link}>
+              <Link to={`https://${data.link}`}>
                 <span>{data.link}</span>
               </Link>
             </div>
