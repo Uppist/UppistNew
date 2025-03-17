@@ -1134,13 +1134,17 @@ form {
 }
 
 .svgs div span {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  color: hsla(293, 78%, 31%, 1);
   font-family: "Source Sans 3";
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
+}
+
+.text-color {
+  color: hsla(0, 0%, 17%, 1);
+}
+.purple,
+.link {
+  color: hsla(293, 78%, 31%, 1) !important;
 }
 
 .svgs div span p {

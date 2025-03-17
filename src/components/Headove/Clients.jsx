@@ -36,10 +36,10 @@ export default function Clients() {
             <hr />
             <div>
               <span>
-                {data.servicetype}
-                <p>{data.type}</p>
+                <span className='purple'> {data.servicetype}</span>
+                <span className='text-color'> {data.type}</span>
               </span>
-              <Link to={`https://${data.link}`}>
+              <Link to={`https://${data.link}`} className='link'>
                 <span>{data.link}</span>
               </Link>
             </div>
