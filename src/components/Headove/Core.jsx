@@ -17,10 +17,10 @@ export default function Core() {
             <h3>Brand Design</h3>
             <hr />
             <p>
-              Get your brand off the ground with affordable brand design
-              services. Whether you're a new business or an existing small
-              business needing to refresh your brand, we can help you with the
-              designs you need from start to finish.
+              Get your brand off the ground with strategic brand design
+              services. Whether you're a new business or an existing business
+              needing to refresh your brand, we can help you with the designs
+              you need from start to finish.
               <br />
               <br /> We Design:
               <ul>
@@ -38,8 +38,8 @@ export default function Core() {
             <h3>Brand Marketing</h3>
             <hr />
             <p>
-              We assist small businesses with affordable marketing services that
-              keep them at the top of their customers' minds.
+              We assist leading businesses and brands with digital marketing
+              services that keep them atop their customers' minds.
               <br />
               <br /> Services Include:
               <ul>

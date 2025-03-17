@@ -28,7 +28,8 @@ export default function ValueSection() {
             <div>
               <h2>Creative and Marketing</h2>
               <p>
-                Affordable creative and marketing services for small businesses.
+                Strategic creative and digital marketing services for
+                ambitious businesses.{" "}
               </p>
             </div>
 
