@@ -6,7 +6,7 @@ import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import HeadoveSection from "./components/Headove/headoveSection";
 import StunLearn from "./components/StunLearn/StunLearn";
 import Ebook from "./components/Ebook/Ebook";
-import Logo from "./components/AIChatbot/logo";
+import Logo from "./components/AIChatbot/Logo";
 
 export default function App() {
   return (
