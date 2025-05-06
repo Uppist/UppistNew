@@ -6,10 +6,12 @@ import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
 import HeadoveSection from "./components/Headove/headoveSection";
 import StunLearn from "./components/StunLearn/StunLearn";
 import Ebook from "./components/Ebook/Ebook";
+import Logo from "./components/AI Chatbot/logo";
 
 export default function App() {
   return (
     <HashRouter>
+      <Logo />
       <div>
         <Routes>
           <Route path='/' element={<AboutUs />} />

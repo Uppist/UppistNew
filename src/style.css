@@ -128,7 +128,7 @@ body::-webkit-scrollbar {
 .firstsection {
   position: fixed;
   top: 0;
-  z-index: 1000;
+  z-index: 1;
   width: 100%;
   background-color: white;
   box-shadow: 0px 5px 7px hsla(0, 0%, 0%, 0.04);

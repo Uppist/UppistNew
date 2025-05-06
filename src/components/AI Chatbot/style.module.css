@@ -1,0 +1,130 @@
+/** @format */
+
+.logo {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+.logo img {
+  width: 56px;
+}
+
+.logo span {
+  font-size: 16px;
+  font-weight: 400;
+  background-color: white;
+  box-shadow: 0px 10px 25px hsla(220, 17%, 17%, 0.08);
+  border-radius: 5px;
+  padding: 16px;
+  font-family: "Inter";
+}
+
+.logo label {
+  font-weight: 600;
+}
+
+/*Welcome AI chatbot*/
+.dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  transition: opacity 1.3s;
+}
+.welcome {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  background-color: hsla(0, 0%, 97%, 1);
+  /* padding: 25px 40px; */
+  border-radius: 10px;
+  align-items: center;
+  gap: 77px;
+}
+
+.header {
+  background: url("../../assets/chatbotImage.png") no-repeat center center;
+  background-size: cover;
+  padding: 25px 40px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.header h2 {
+  width: 335px;
+  font-size: 40px;
+  font-weight: 700;
+  color: hsla(0, 0%, 93%, 1);
+  margin-bottom: 70px;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo img {
+  cursor: pointer;
+}
+
+.content {
+  background-color: white;
+  width: fit-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 24px;
+  position: relative;
+  top: -120px;
+  gap: 24px;
+  border-radius: 10px;
+}
+
+.text {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.text span {
+  display: flex;
+  width: 226px;
+  font-size: 12px;
+  font-weight: 500;
+  color: hsla(210, 5%, 45%, 1);
+}
+
+.content button {
+  padding: 16px 113px;
+  border: 0;
+  background-color: hsla(34, 94%, 54%, 1);
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: "Inter";
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/*Chatbot styling*/

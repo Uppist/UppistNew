@@ -11957,9 +11957,11 @@ function K5() {
                   o.jsxs("div", {
                     children: [
                       o.jsx("h2", { children: "Creative and Marketing" }),
-                      o.jsx("p", {
-                        children:
-                          "Affordable creative and marketing services for small businesses.",
+                      o.jsxs("p", {
+                        children: [
+                          "Strategic creative and digital marketing services for ambitious businesses.",
+                          " ",
+                        ],
                       }),
                     ],
                   }),
@@ -12797,12 +12799,19 @@ function _t() {
                   children: [
                     o.jsxs("span", {
                       children: [
-                        f.servicetype,
-                        o.jsx("p", { children: f.type }),
+                        o.jsxs("span", {
+                          className: "purple",
+                          children: [" ", f.servicetype],
+                        }),
+                        o.jsxs("span", {
+                          className: "text-color",
+                          children: [" ", f.type],
+                        }),
                       ],
                     }),
                     o.jsx(g9, {
                       to: `https://${f.link}`,
+                      className: "link",
                       children: o.jsx("span", { children: f.link }),
                     }),
                   ],
@@ -18066,7 +18075,7 @@ function a4() {
                   o.jsx("hr", {}),
                   o.jsxs("p", {
                     children: [
-                      "Get your brand off the ground with affordable brand design services. Whether you're a new business or an existing small business needing to refresh your brand, we can help you with the designs you need from start to finish.",
+                      "Get your brand off the ground with strategic brand design services. Whether you're a new business or an existing business needing to refresh your brand, we can help you with the designs you need from start to finish.",
                       o.jsx("br", {}),
                       o.jsx("br", {}),
                       " We Design:",
@@ -18098,7 +18107,7 @@ function a4() {
                   o.jsx("hr", {}),
                   o.jsxs("p", {
                     children: [
-                      "We assist small businesses with affordable marketing services that keep them at the top of their customers' minds.",
+                      "We assist leading businesses and brands with digital marketing services that keep them atop their customers' minds.",
                       o.jsx("br", {}),
                       o.jsx("br", {}),
                       " Services Include:",
