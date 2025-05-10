@@ -95,6 +95,12 @@ export default function Chatbot({ Close, handleClose }) {
               type='text'
               placeholder='Ask me anything...'
               required
+              onKeyDown={(e) => {
+                if (e.key === "Enter" && !e.shiftKey) {
+                  e.preventDefault();
+                  handleSubmit(e);
+                }
+              }}
             ></textarea>
             <img src={emoji} alt='' />
           </div>
