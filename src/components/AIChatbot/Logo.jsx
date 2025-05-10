@@ -6,6 +6,7 @@ import styles from "./style.module.css";
 import Welcome from "./Welcome";
 export default function Logo() {
   const [isWelcome, setIsWelcome] = useState(false);
+  const [isChatbot, setIsChatbot] = useState(false);
   // Function to handle click event
   function handleClick() {
     setIsWelcome(true);
@@ -17,7 +18,11 @@ export default function Logo() {
   return (
     <>
       {isWelcome ? (
-        <Welcome handleClose={handleClose} />
+        <Welcome
+          handleClose={handleClose}
+          isChatbot={isChatbot}
+          setIsChatbot={setIsChatbot}
+        />
       ) : (
         <div className={styles.logo} onClick={handleClick}>
           <span>

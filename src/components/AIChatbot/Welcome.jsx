@@ -6,9 +6,7 @@ import logo from "../../assets/logo.svg";
 import cancel from "../../assets/cancel.svg";
 import chatbot from "../../assets/chatbot.svg";
 import Chatbot from "./Chatbot";
-export default function Welcome({ handleClose }) {
-  const [isChatbot, setIsChatbot] = useState(false);
-
+export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
   function handleClick() {
     setIsChatbot(true);
   }
@@ -18,32 +16,30 @@ export default function Welcome({ handleClose }) {
 
   return (
     <div className={styles.dropdown}>
-      <div className={styles.overlay}></div>
-      <div className={styles.welcome}>
-        {isChatbot ? (
-          <Chatbot Close={Close} />
-        ) : (
-          <>
-            <div className={styles.header}>
-              <div className={styles.header__logo}>
-                <img src={logo} alt='' />
-                <img src={cancel} alt='' onClick={handleClose} />
-              </div>
-              <h2>Hello, how can we help you today? 👋</h2>
+      <div className={styles.overlay} onClick={handleClose}></div>
+      {isChatbot ? (
+        <Chatbot Close={Close} handleClose={handleClose} />
+      ) : (
+        <div className={styles.welcome}>
+          <div className={styles.header}>
+            <div className={styles.header__logo}>
+              <img src={logo} alt='' />
+              <img src={cancel} alt='' onClick={handleClose} />
             </div>
-            <div className={styles.content}>
-              <div className={styles.text}>
-                <img src={chatbot} alt='' />
-                <span>
-                  Ask all your questions and generate essays, articles, reports,
-                  success stories & more
-                </span>
-              </div>
-              <button onClick={handleClick}>Chat with us</button>
+            <h2>Hello, how can we help you today? 👋</h2>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.text}>
+              <img src={chatbot} alt='' />
+              <span>
+                Ask all your questions and generate essays, articles, reports,
+                success stories & more
+              </span>
             </div>
-          </>
-        )}
-      </div>
+            <button onClick={handleClick}>Chat with us</button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
