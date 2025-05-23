@@ -33,10 +33,7 @@ export default function Ebook() {
     setIsNext(true);
 
     axios
-      .post(
-        "https://luround-api-7ad1326c3c1f.herokuapp.com/api/download-ebook",
-        data
-      )
+      .post("https://api.luround.com/v1/download-ebook", data)
       .then((res) => {
         console.log("response", res);
       });

@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./style.module.css";
 import back from "../../assets/left.svg";
 import ai from "../../assets/ai.svg";
@@ -12,6 +12,12 @@ import axios from "axios";
 
 export default function Chatbot({ Close, handleClose }) {
   const [chatHistory, setChatHistory] = useState([]);
+
+  const messagesEndRef = useRef(null);
+
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatHistory]);
 
   function generateResponse(history) {
     console.log(history);
@@ -78,10 +84,11 @@ export default function Chatbot({ Close, handleClose }) {
             key={index}
           >
             {chat.role === "model" && <img src={chatbot} alt='' />}
+            <div ref={messagesEndRef} />
+
             <span>{chat.text}</span>
           </div>
         ))}
-
         {/* <div className={styles.bot}>
           <span>bot</span>
         </div> */}

@@ -282,3 +282,7 @@
   border: none;
   background-color: transparent;
 }
+
+.logo {
+  display: none;
+}
