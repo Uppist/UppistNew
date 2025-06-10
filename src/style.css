@@ -930,6 +930,9 @@ form {
   display: flex;
   flex-direction: column;
   gap: 50px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
 }
 
 .info {
