@@ -172,7 +172,7 @@
 .bot {
   display: flex;
   align-items: start;
-  gap: 16px;
+  gap: 8px;
 }
 
 .bot img {
@@ -182,17 +182,17 @@
 .bot span {
   max-width: 75%;
   /* width: 100%; */
-  background-color: white;
+  /* background-color: white; */
   padding: 16px 24px;
   color: hsla(0, 0%, 17%, 1);
-  font-weight: 500;
+  /* font-weight: 500;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  box-sizing: border-box;
+  box-sizing: border-box; */
 }
 
 .human {
@@ -213,7 +213,7 @@
   word-wrap: break-word;
   overflow-wrap: break-word;
   white-space: pre-wrap;
-  background: url("../../assets/chatbotImage.png") no-repeat;
+  background: url("../../assets/chatbotImage.png") no-repeat !important;
   /* width: fit-content; */
   color: white;
   font-weight: 500;
@@ -283,6 +283,125 @@
   background-color: transparent;
 }
 
-.logo {
+/* .logo {
   display: none;
+} */
+
+.typing,
+.botText {
+  background-color: white;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+
+  padding: 16px 24px;
+  color: hsla(0, 0%, 17%, 1);
+  font-weight: 500;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  /* box-sizing: border-box; */
+}
+
+.botText p {
+  margin: 0;
+}
+
+.typing span {
+  /* display: inline-block; */
+  /* width: 10px; */
+  animation: blink 1.4s infinite;
+}
+
+.typing span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes blink {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .logo {
+    right: 0px;
+    align-items: end;
+  }
+
+  .logo span {
+    font-size: 14px;
+  }
+
+  .header h2 {
+    font-size: 20px;
+    width: 236px;
+  }
+
+  .text span {
+    width: 173px;
+    font-size: 10px;
+  }
+
+  .content button {
+    font-size: 14px;
+    padding: 16px 80px;
+  }
+
+  .header img {
+    width: 92px;
+  }
+
+  .cancel {
+    width: 24px !important;
+  }
+
+  .chatbot {
+    width: 85%;
+    height: 80%;
+    right: 30px;
+    bottom: 40px;
+  }
+
+  .send {
+    padding: 16px 0px 16px 24px;
+    justify-content: space-between;
+  }
+
+  .send div textarea {
+    font-size: 14px;
+  }
+
+  .sendImg {
+    width: 60px !important;
+  }
+
+  .human span,
+  .botText {
+    padding: 10px 16px;
+    text-align: justify;
+  }
+
+  .bot {
+    gap: 4px;
+  }
+
+  .send img {
+    width: 16px;
+  }
+
+  .send button {
+    padding: 0;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1200px) {
 }

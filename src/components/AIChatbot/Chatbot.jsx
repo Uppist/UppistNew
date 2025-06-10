@@ -9,9 +9,11 @@ import emoji from "../../assets/emoji.svg";
 import enter from "../../assets/enter.svg";
 import chatbot from "../../assets/chatbot.svg";
 import axios from "axios";
+import ReactMarkdown from "react-markdown";
 
 export default function Chatbot({ Close, handleClose }) {
   const [chatHistory, setChatHistory] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
 
   const messagesEndRef = useRef(null);
 
@@ -32,10 +34,12 @@ export default function Chatbot({ Close, handleClose }) {
     inputRef.current.value = "";
 
     // Show user message immediately
+    setChatHistory((prev) => [...prev, { role: "user", text: userMessage }]);
+
+    setIsTyping(true);
     setChatHistory((prev) => [
       ...prev,
-      { role: "user", text: userMessage },
-      { role: "model", text: "" }, // temporary placeholder
+      { role: "model", text: "..." }, // Placeholder for AI response
     ]);
 
     try {
@@ -44,22 +48,31 @@ export default function Chatbot({ Close, handleClose }) {
         {
           user_prompt: userMessage,
         },
-        { headers: { "Content-Type": "application/json" } }
+        {
+          headers: { "Content-Type": "application/json" },
+        }
       );
 
       const aiReply = response.data.response.content;
-      // console.log(response.data.response.content);
 
       // Replace "Thinking..." with actual response
-      setChatHistory(
-        (prev) => [
-          ...prev.slice(0, -1), // remove "Thinking..."
-          { role: "model", text: aiReply },
-        ],
-        generateResponse([...chatHistory], { role: "model", text: userMessage })
-      );
+      setTimeout(() => {
+        setIsTyping(false);
+
+        setChatHistory(
+          (prev) => [
+            ...prev.slice(0, -1), // remove "Thinking..."
+            { role: "model", text: aiReply },
+          ],
+          generateResponse([...chatHistory], {
+            role: "model",
+            text: userMessage,
+          })
+        );
+      }, 1000);
     } catch (error) {
       console.error("Error getting AI response:", error);
+      setIsTyping(false);
       setChatHistory((prev) => [
         ...prev.slice(0, -1),
         { role: "model", text: "Error: Could not get response." },
@@ -85,13 +98,21 @@ export default function Chatbot({ Close, handleClose }) {
           >
             {chat.role === "model" && <img src={chatbot} alt='' />}
             <div ref={messagesEndRef} />
-
-            <span>{chat.text}</span>
+            {chat.text === "..." && isTyping ? (
+              <div className={styles.typing}>
+                <span>. . .</span>
+                {/* <span>.</span> */}
+                {/* <span>.</span> */}
+              </div>
+            ) : chat.role === "model" ? (
+              <div className={styles.botText}>
+                <ReactMarkdown>{chat.text}</ReactMarkdown>
+              </div>
+            ) : (
+              <span>{chat.text}</span>
+            )}
           </div>
         ))}
-        {/* <div className={styles.bot}>
-          <span>bot</span>
-        </div> */}
       </div>
 
       <form action='' onSubmit={handleSubmit}>
@@ -112,7 +133,7 @@ export default function Chatbot({ Close, handleClose }) {
             <img src={emoji} alt='' />
           </div>
           <button>
-            <img src={enter} alt='' />
+            <img src={enter} className={styles.sendImg} alt='' />
           </button>
         </div>
       </form>

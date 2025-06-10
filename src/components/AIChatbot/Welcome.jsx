@@ -24,7 +24,12 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
           <div className={styles.header}>
             <div className={styles.header__logo}>
               <img src={logo} alt='' />
-              <img src={cancel} alt='' onClick={handleClose} />
+              <img
+                src={cancel}
+                alt=''
+                className={styles.cancel}
+                onClick={handleClose}
+              />
             </div>
             <h2>Hello, how can we help you today? 👋</h2>
           </div>
