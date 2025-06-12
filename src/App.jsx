@@ -7,6 +7,7 @@ import HeadoveSection from "./components/Headove/headoveSection";
 import StunLearn from "./components/StunLearn/StunLearn";
 import Ebook from "./components/Ebook/Ebook";
 import Logo from "./components/AIChatbot/Logo";
+import Admin from "./components/Admin/Admin";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
           <Route path='contact' element={<Contactus />} />
           <Route path='stunlearn' element={<StunLearn />} />
           <Route path='ebook' element={<Ebook />} />
+          <Route path='admin' element={<Admin />} />
         </Routes>
       </div>
     </HashRouter>
