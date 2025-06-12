@@ -14,88 +14,82 @@ import ReactMarkdown from "react-markdown";
 export default function Chatbot({ Close, handleClose }) {
   const [chatHistory, setChatHistory] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
-
+  const inputRef = useRef(null);
   const messagesEndRef = useRef(null);
 
+  // Scroll to bottom whenever chat updates
   useEffect(() => {
-    // Disable body scroll
-    document.body.style.overflow = "hidden";
+    const timeout = setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+    return () => clearTimeout(timeout);
+  }, [chatHistory]);
 
+  // Prevent body scroll when chat is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
     return () => {
-      // Re-enable scroll on cleanup
       document.body.style.overflow = "auto";
     };
   }, []);
 
-  useEffect(() => {
-    console.log("Scrolling to bottom...");
-
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [chatHistory]);
-
   function generateResponse(history) {
-    console.log(history);
+    console.log("Chat History Sent:", history);
   }
 
-  const inputRef = useRef();
   async function handleSubmit(e) {
     e.preventDefault();
-
     const userMessage = inputRef.current.value.trim();
     if (!userMessage) return;
+
     inputRef.current.value = "";
 
-    // Show user message immediately
-    setChatHistory((prev) => [...prev, { role: "user", text: userMessage }]);
+    const newHistory = [
+      ...chatHistory,
+      { role: "user", text: userMessage },
+      { role: "model", text: "..." },
+    ];
 
+    setChatHistory(newHistory);
     setIsTyping(true);
-    setChatHistory((prev) => [
-      ...prev,
-      { role: "model", text: "..." }, // Placeholder for AI response
-    ]);
 
     try {
       const response = await axios.post(
         "https://bot.uppist.xyz/chat",
-        {
-          user_prompt: userMessage,
-        },
-        {
-          headers: { "Content-Type": "application/json" },
-        }
+        { user_prompt: userMessage },
+        { headers: { "Content-Type": "application/json" } }
       );
 
-      const aiReply = response.data.response.content;
+      const aiReply = response.data?.response?.content || "No response.";
+      setIsTyping(false);
 
-      // Replace "Thinking..." with actual response
-      setTimeout(() => {
-        setIsTyping(false);
+      const updatedHistory = [
+        ...chatHistory,
+        { role: "user", text: userMessage },
+        { role: "model", text: aiReply },
+      ];
 
-        setChatHistory((prev) => [
-          ...prev.slice(0, -1), // remove "Thinking..."
-          { role: "model", text: aiReply },
-        ]);
-        const storedPrompts =
-          JSON.parse(localStorage.getItem("user_prompts")) || [];
-        storedPrompts.push({ user: userMessage, bot: aiReply });
-        localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
-        generateResponse([...chatHistory], {
-          role: "model",
-          text: userMessage,
-        });
-      }, 1000);
+      setChatHistory(updatedHistory);
+
+      // Save to localStorage
+      const storedPrompts =
+        JSON.parse(localStorage.getItem("user_prompts")) || [];
+      storedPrompts.push({ user: userMessage, bot: aiReply });
+      localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
+
+      generateResponse(updatedHistory);
     } catch (error) {
       console.error("Error getting AI response:", error);
       setIsTyping(false);
-      setChatHistory((prev) => [
-        ...prev.slice(0, -1),
-        { role: "model", text: "Error: Could not get response." },
-      ]);
-    }
 
-    setTimeout(() => {
-      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
-    }, 100);
+      const errorHistory = [
+        ...chatHistory,
+        { role: "user", text: userMessage },
+        { role: "model", text: "Error: Could not get response." },
+      ];
+
+      setChatHistory(errorHistory);
+    }
   }
 
   return (
@@ -109,7 +103,7 @@ export default function Chatbot({ Close, handleClose }) {
       <div className={styles.texts}>
         {chatHistory.map((chat, index) => (
           <div
-            className={` ${
+            className={`${
               chat.role === "model" ? styles.bot : styles.human
             } message user-message`}
             key={index}
@@ -132,12 +126,11 @@ export default function Chatbot({ Close, handleClose }) {
         <div ref={messagesEndRef} />
       </div>
 
-      <form action='' onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div className={styles.send}>
           <div>
             <textarea
               ref={inputRef}
-              type='text'
               placeholder='Ask me anything...'
               required
               onKeyDown={(e) => {
@@ -149,7 +142,7 @@ export default function Chatbot({ Close, handleClose }) {
             ></textarea>
             <img src={emoji} alt='' />
           </div>
-          <button>
+          <button type='submit'>
             <img src={enter} className={styles.sendImg} alt='' />
           </button>
         </div>
