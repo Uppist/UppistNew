@@ -406,7 +406,7 @@
   }
 
   .chatbot {
-    width: 35%;
+    width: 85%;
     height: 400px;
     right: 30px;
     bottom: 40px;
@@ -441,6 +441,19 @@
 
   .send button {
     padding: 0;
+  }
+
+  .input {
+    gap: 0;
+    margin-left: 10px;
+  }
+
+  .input input {
+    font-size: 14px;
+  }
+
+  .input span {
+    font-size: 12px;
   }
 }
 
