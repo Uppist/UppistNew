@@ -7,6 +7,13 @@ import table from "./Table.json";
 import copy from "../../assets/copyP.svg";
 
 export default function Table() {
+  const nestedLogs = JSON.parse(localStorage.getItem("logs")) || [];
+  const logs = nestedLogs[0] || []; // get the inner array
+  // console.log(logs[0]);
+
+  const name = JSON.parse(localStorage.getItem("user_name")) || [];
+  const email = JSON.parse(localStorage.getItem("email")) || [];
+
   const SvgCopy = {
     svg: copy,
   };
@@ -15,41 +22,41 @@ export default function Table() {
       <div className={styles.tableHeader}>
         <div className={`${styles.name} ${styles.firstName}`}>
           <span>User Name</span>
-          {table.map((data, index) => (
+          {name.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data.FirstName}</span>
+              <span>{data}</span>
             </div>
           ))}
         </div>
         <div className={styles.name}>
           <span>Email Address</span>
-          {table.map((data, index) => (
+          {email.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data.Email}</span>
+              <span>{data}</span>
             </div>
           ))}
         </div>
         <div className={styles.name}>
           <span>Prompt Query</span>
-          {table.map((data, index) => (
+          {logs.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data.LastName}</span>
+              <span>{`"${data.prompt}"`}</span>
             </div>
           ))}
         </div>
         <div className={styles.name}>
           <span>AI Response</span>
-          {table.map((data, index) => (
+          {logs.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data.phone}</span>
+              <span>{`"${data.response}"`}</span>
             </div>
           ))}
         </div>
         <div className={styles.name}>
           <span>Date/Time</span>
-          {table.map((data, index) => (
+          {logs.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data.Date}</span>
+              <span>{data.timestamp}</span>
             </div>
           ))}
         </div>

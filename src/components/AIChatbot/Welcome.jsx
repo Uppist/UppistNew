@@ -26,8 +26,14 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
     }
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      localStorage.setItem("user_name", logindetail.name);
-      localStorage.setItem("email", logindetail.email);
+      const storedNames = JSON.parse(localStorage.getItem("user_name") || "[]");
+      storedNames.push(logindetail.name);
+      localStorage.setItem("user_name", JSON.stringify(storedNames));
+
+      const storedEmails = JSON.parse(localStorage.getItem("email") || "[]");
+      storedEmails.push(logindetail.email);
+      localStorage.setItem("email", JSON.stringify(storedEmails));
+
       setIsChatbot(true);
     }
   }
@@ -39,7 +45,11 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
     <div className={styles.dropdown}>
       <div className={styles.overlay} onClick={handleClose}></div>
       {isChatbot ? (
-        <Chatbot Close={Close} handleClose={handleClose} />
+        <Chatbot
+          Close={Close}
+          handleClose={handleClose}
+          logindetail={logindetail}
+        />
       ) : (
         <div className={styles.welcome}>
           <div className={styles.header}>

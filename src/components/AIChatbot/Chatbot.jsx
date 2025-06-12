@@ -11,11 +11,26 @@ import chatbot from "../../assets/chatbot.svg";
 import axios from "axios";
 import ReactMarkdown from "react-markdown";
 
-export default function Chatbot({ Close, handleClose }) {
+export default function Chatbot({ Close, handleClose, logindetail }) {
   const [chatHistory, setChatHistory] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
   const inputRef = useRef(null);
   const messagesEndRef = useRef(null);
+  const now = new Date();
+
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+
+  let hours = now.getHours();
+  const minutes = String(now.getMinutes()).padStart(2, "0");
+  const ampm = hours >= 12 ? "PM" : "AM";
+
+  hours = hours % 12;
+  hours = hours ? hours : 12; // convert 0 to 12
+  const formattedHour = String(hours).padStart(2, "0");
+
+  const formattedTime = `${year}-${month}-${day} / ${formattedHour}:${minutes} ${ampm}`;
 
   // Scroll to bottom whenever chat updates
   useEffect(() => {
@@ -56,7 +71,11 @@ export default function Chatbot({ Close, handleClose }) {
     try {
       const response = await axios.post(
         "https://bot.uppist.xyz/chat",
-        { user_prompt: userMessage },
+        {
+          user_prompt: userMessage,
+          user_name: logindetail.name,
+          email: logindetail.email,
+        },
         { headers: { "Content-Type": "application/json" } }
       );
 
@@ -72,12 +91,25 @@ export default function Chatbot({ Close, handleClose }) {
       setChatHistory(updatedHistory);
 
       // Save to localStorage
-      const storedPrompts =
-        JSON.parse(localStorage.getItem("user_prompts")) || [];
-      storedPrompts.push({ user: userMessage, bot: aiReply });
-      localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
+      // const storedPrompts =
+      //   JSON.parse(localStorage.getItem("user_prompts")) || [];
+      // storedPrompts.push({ user: userMessage, bot: aiReply });
+      // localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
 
       generateResponse(updatedHistory);
+
+      const response_log = await axios.get("https://bot.uppist.xyz/logs", {
+        params: {
+          prompt: userMessage,
+          response: aiReply, // Make sure this matches your API key
+          timestamp: formattedTime,
+        },
+      });
+      console.log(response_log.data);
+
+      const existingLogs = JSON.parse(localStorage.getItem("logs")) || [];
+      existingLogs.push(response_log.data);
+      localStorage.setItem("logs", JSON.stringify(existingLogs));
     } catch (error) {
       console.error("Error getting AI response:", error);
       setIsTyping(false);
