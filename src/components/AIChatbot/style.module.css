@@ -58,7 +58,7 @@
   /* padding: 25px 40px; */
   border-radius: 10px;
   align-items: center;
-  gap: 77px;
+  gap: 28px;
 }
 
 .header {
@@ -71,10 +71,9 @@
 
 .header h2 {
   width: 335px;
-  font-size: 40px;
+  font-size: 30px;
   font-weight: 700;
   color: hsla(0, 0%, 93%, 1);
-  margin-bottom: 70px;
 }
 
 .header__logo {
@@ -87,6 +86,36 @@
   cursor: pointer;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: relative;
+  top: -11px;
+  align-items: baseline;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.input span {
+  font-size: 14px;
+  color: hsla(217, 24%, 27%, 1);
+  font-family: "Inter";
+  font-weight: 500;
+  width: 63px;
+}
+
+.input input {
+  padding: 16px 24px;
+  height: 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
 .content {
   background-color: white;
   width: fit-content;
@@ -95,7 +124,7 @@
   align-items: center;
   padding: 24px;
   position: relative;
-  top: -120px;
+  top: -10px;
   gap: 24px;
   border-radius: 10px;
 }
@@ -158,9 +187,6 @@
   padding: 24px;
   height: 400px;
   overflow-y: auto;
-  /* max-width: 100%;
-  word-wrap: break-word;
-  overflow-wrap: break-word; */
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
@@ -193,6 +219,20 @@
   overflow-wrap: break-word;
   white-space: pre-wrap;
   box-sizing: border-box; */
+}
+
+.name,
+.email {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: red;
+  font-size: 14px;
+}
+
+.name p,
+.email p {
+  margin: 0;
 }
 
 .human {
@@ -366,7 +406,7 @@
 
   .chatbot {
     width: 85%;
-    height: 50%;
+    /* height: 70%; */
     right: 30px;
     bottom: 40px;
   }

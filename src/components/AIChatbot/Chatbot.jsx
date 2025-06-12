@@ -18,6 +18,18 @@ export default function Chatbot({ Close, handleClose }) {
   const messagesEndRef = useRef(null);
 
   useEffect(() => {
+    // Disable body scroll
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      // Re-enable scroll on cleanup
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
+  useEffect(() => {
+    console.log("Scrolling to bottom...");
+
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [chatHistory]);
 
@@ -59,16 +71,18 @@ export default function Chatbot({ Close, handleClose }) {
       setTimeout(() => {
         setIsTyping(false);
 
-        setChatHistory(
-          (prev) => [
-            ...prev.slice(0, -1), // remove "Thinking..."
-            { role: "model", text: aiReply },
-          ],
-          generateResponse([...chatHistory], {
-            role: "model",
-            text: userMessage,
-          })
-        );
+        setChatHistory((prev) => [
+          ...prev.slice(0, -1), // remove "Thinking..."
+          { role: "model", text: aiReply },
+        ]);
+        const storedPrompts =
+          JSON.parse(localStorage.getItem("user_prompts")) || [];
+        storedPrompts.push({ user: userMessage, bot: aiReply });
+        localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
+        generateResponse([...chatHistory], {
+          role: "model",
+          text: userMessage,
+        });
       }, 1000);
     } catch (error) {
       console.error("Error getting AI response:", error);
@@ -78,6 +92,10 @@ export default function Chatbot({ Close, handleClose }) {
         { role: "model", text: "Error: Could not get response." },
       ]);
     }
+
+    setTimeout(() => {
+      messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
   }
 
   return (
@@ -97,12 +115,10 @@ export default function Chatbot({ Close, handleClose }) {
             key={index}
           >
             {chat.role === "model" && <img src={chatbot} alt='' />}
-            <div ref={messagesEndRef} />
+
             {chat.text === "..." && isTyping ? (
               <div className={styles.typing}>
                 <span>. . .</span>
-                {/* <span>.</span> */}
-                {/* <span>.</span> */}
               </div>
             ) : chat.role === "model" ? (
               <div className={styles.botText}>
@@ -113,6 +129,7 @@ export default function Chatbot({ Close, handleClose }) {
             )}
           </div>
         ))}
+        <div ref={messagesEndRef} />
       </div>
 
       <form action='' onSubmit={handleSubmit}>

@@ -13,7 +13,7 @@ export default function Admin() {
 
       <div className={styles.content}>
         <div className={styles.header}>
-          <h2>Mailing Lists</h2>
+          <h2>Chatbot Logs</h2>
           <div className={styles.copy}>
             <img src={copy} alt='' />
             <span>Copy CSV</span>

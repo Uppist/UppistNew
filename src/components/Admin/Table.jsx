@@ -7,28 +7,61 @@ import table from "./Table.json";
 import copy from "../../assets/copyP.svg";
 
 export default function Table() {
+  const SvgCopy = {
+    svg: copy,
+  };
   return (
     <div className={styles.table}>
       <div className={styles.tableHeader}>
-        <div className={styles.tableRow}>
-          <span>First Name</span>
-          <span>Last Name</span>
+        <div className={`${styles.name} ${styles.firstName}`}>
+          <span>User Name</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <span>{data.FirstName}</span>
+            </div>
+          ))}
+        </div>
+        <div className={styles.name}>
           <span>Email Address</span>
-          <span>Phone Number</span>
-          <span>Date</span>
-          <span>Svg</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <span>{data.Email}</span>
+            </div>
+          ))}
+        </div>
+        <div className={styles.name}>
+          <span>Prompt Query</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <span>{data.LastName}</span>
+            </div>
+          ))}
+        </div>
+        <div className={styles.name}>
+          <span>AI Response</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <span>{data.phone}</span>
+            </div>
+          ))}
+        </div>
+        <div className={styles.name}>
+          <span>Date/Time</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <span>{data.Date}</span>
+            </div>
+          ))}
         </div>
 
-        {table.map((data, index) => (
-          <div className={styles.tableRow} key={index}>
-            <span>{data.FirstName}</span>
-            <span>{data.LastName}</span>
-            <span>{data.Email}</span>
-            <span>{data.phone}</span>
-            <span>{data.Date}</span>
-            <img src={copy} alt='' />
-          </div>
-        ))}
+        <div className={`${styles.name} ${styles.svg}`}>
+          <span className={styles.svgtext}>Svg</span>
+          {table.map((data, index) => (
+            <div className={styles.tableRow} key={index}>
+              <img src={SvgCopy[data.img]} alt='' />
+            </div>
+          ))}
+        </div>
       </div>
       <Buttons />
     </div>

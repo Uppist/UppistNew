@@ -7,8 +7,29 @@ import cancel from "../../assets/cancel.svg";
 import chatbot from "../../assets/chatbot.svg";
 import Chatbot from "./Chatbot";
 export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
+  const [logindetail, setLoginDetail] = useState({
+    name: "",
+    email: "",
+  });
+  const [errors, setErrors] = useState({});
+  function LoginDetail(e) {
+    setLoginDetail({ ...logindetail, [e.target.name]: e.target.value });
+  }
   function handleClick() {
-    setIsChatbot(true);
+    const newErrors = {};
+
+    if (!logindetail.name) {
+      newErrors.name = "Name is required.";
+    }
+    if (!logindetail.email) {
+      newErrors.email = "Email address is required.";
+    }
+    setErrors(newErrors);
+    if (Object.keys(newErrors).length === 0) {
+      localStorage.setItem("user_name", logindetail.name);
+      localStorage.setItem("email", logindetail.email);
+      setIsChatbot(true);
+    }
   }
   function Close() {
     setIsChatbot(false);
@@ -32,6 +53,35 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
               />
             </div>
             <h2>Hello, how can we help you today? 👋</h2>
+          </div>
+
+          <div className={styles.form}>
+            <div className={styles.input}>
+              <span>Name:</span>
+              <div className={styles.name}>
+                <input
+                  type='text'
+                  name='name'
+                  id=''
+                  value={logindetail.name}
+                  onChange={(e) => LoginDetail(e)}
+                />
+                {errors.name && <p className={styles.error}>{errors.name}</p>}
+              </div>
+            </div>
+            <div className={styles.input}>
+              <span>Email Address:</span>
+              <div className={styles.email}>
+                <input
+                  type='email'
+                  name='email'
+                  id=''
+                  value={logindetail.email}
+                  onChange={(e) => LoginDetail(e)}
+                />
+                {errors.email && <p className={styles.error}>{errors.email}</p>}
+              </div>
+            </div>
           </div>
           <div className={styles.content}>
             <div className={styles.text}>
