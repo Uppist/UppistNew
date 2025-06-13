@@ -1,15 +1,29 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Buttons from "./Buttons";
 import styles from "./style.module.css";
 import table from "./Table.json";
 import copy from "../../assets/copyP.svg";
-
+import axios from "axios";
 export default function Table() {
-  const nestedLogs = JSON.parse(localStorage.getItem("logs")) || [];
-  const logs = nestedLogs[0] || []; // get the inner array
-  console.log(logs);
+  const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchLogs = async () => {
+    try {
+      const response = await axios.get("https://bot.uppist.xyz/logs");
+      setLogs(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch logs:", error);
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchLogs();
+  }, []);
 
   const SvgCopy = {
     svg: copy,

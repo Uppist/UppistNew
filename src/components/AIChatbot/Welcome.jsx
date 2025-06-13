@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
 import logo from "../../assets/logo.svg";
 import cancel from "../../assets/cancel.svg";
@@ -12,6 +12,16 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
     email: "",
   });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const name = JSON.parse(localStorage.getItem("user_name"));
+    const email = JSON.parse(localStorage.getItem("email"));
+
+    if (name && email) {
+      setLoginDetail({ name, email });
+      setIsChatbot(true); // Open chatbot directly
+    }
+  }, []);
   function LoginDetail(e) {
     setLoginDetail({ ...logindetail, [e.target.name]: e.target.value });
   }
@@ -26,13 +36,9 @@ export default function Welcome({ handleClose, isChatbot, setIsChatbot }) {
     }
     setErrors(newErrors);
     if (Object.keys(newErrors).length === 0) {
-      const storedNames = JSON.parse(localStorage.getItem("user_name") || "[]");
-      storedNames.push(logindetail.name);
-      localStorage.setItem("user_name", JSON.stringify(storedNames));
+      localStorage.setItem("user_name", JSON.stringify(logindetail.name));
 
-      const storedEmails = JSON.parse(localStorage.getItem("email") || "[]");
-      storedEmails.push(logindetail.email);
-      localStorage.setItem("email", JSON.stringify(storedEmails));
+      localStorage.setItem("email", JSON.stringify(logindetail.email));
 
       setIsChatbot(true);
     }

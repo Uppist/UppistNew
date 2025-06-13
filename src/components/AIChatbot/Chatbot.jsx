@@ -90,26 +90,7 @@ export default function Chatbot({ Close, handleClose, logindetail }) {
 
       setChatHistory(updatedHistory);
 
-      // Save to localStorage
-      // const storedPrompts =
-      //   JSON.parse(localStorage.getItem("user_prompts")) || [];
-      // storedPrompts.push({ user: userMessage, bot: aiReply });
-      // localStorage.setItem("user_prompts", JSON.stringify(storedPrompts));
-
       generateResponse(updatedHistory);
-
-      const response_log = await axios.get("https://bot.uppist.xyz/logs", {
-        params: {
-          prompt: userMessage,
-          response: aiReply, // Make sure this matches your API key
-          timestamp: formattedTime,
-        },
-      });
-      console.log(response_log.data);
-
-      const existingLogs = JSON.parse(localStorage.getItem("logs")) || [];
-      existingLogs.push(response_log.data);
-      localStorage.setItem("logs", JSON.stringify(existingLogs));
     } catch (error) {
       console.error("Error getting AI response:", error);
       setIsTyping(false);
@@ -122,6 +103,15 @@ export default function Chatbot({ Close, handleClose, logindetail }) {
 
       setChatHistory(errorHistory);
     }
+
+    const response_log = await axios.get("https://bot.uppist.xyz/logs", {
+      params: {
+        prompt: userMessage,
+        response: aiReply, // Make sure this matches your API key
+        timestamp: formattedTime,
+      },
+    });
+    console.log(response_log.data);
   }
 
   return (
