@@ -2,7 +2,7 @@
 
 import AboutUs from "./components/Aboutus/AboutUs";
 import Contactus from "./components/Contactus/Contactus";
-import { HashRouter, BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import HeadoveSection from "./components/Headove/headoveSection";
 import StunLearn from "./components/StunLearn/StunLearn";
 import Ebook from "./components/Ebook/Ebook";
@@ -10,9 +10,10 @@ import Logo from "./components/AIChatbot/Logo";
 import Admin from "./components/Admin/Admin";
 
 export default function App() {
+  const location = useLocation();
   return (
-    <HashRouter>
-      <Logo />
+    <>
+      {location.pathname !== "/admin" && <Logo />}
       <div>
         <Routes>
           <Route path='/' element={<AboutUs />} />
@@ -23,6 +24,6 @@ export default function App() {
           <Route path='admin' element={<Admin />} />
         </Routes>
       </div>
-    </HashRouter>
+    </>
   );
 }

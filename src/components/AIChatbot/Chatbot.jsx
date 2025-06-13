@@ -14,6 +14,10 @@ import ReactMarkdown from "react-markdown";
 export default function Chatbot({ Close, handleClose, logindetail }) {
   const [chatHistory, setChatHistory] = useState([]);
   const [isTyping, setIsTyping] = useState(false);
+  const [sessionId, setSessionId] = useState(() => {
+    return localStorage.getItem("session_id") || null;
+  });
+
   const inputRef = useRef(null);
   const messagesEndRef = useRef(null);
   const now = new Date();
@@ -75,11 +79,19 @@ export default function Chatbot({ Close, handleClose, logindetail }) {
           user_prompt: userMessage,
           user_name: logindetail.name,
           email: logindetail.email,
+          session_id: sessionId,
         },
         { headers: { "Content-Type": "application/json" } }
       );
 
       const aiReply = response.data?.response?.content || "No response.";
+      const newSessionId = response.data?.session_id;
+
+      if (newSessionId && !localStorage.getItem("session_id")) {
+        localStorage.setItem("session_id", newSessionId);
+        setSessionId(newSessionId); // update state too
+      }
+      console.log("AI Response:", response.data.session_id);
       setIsTyping(false);
 
       const updatedHistory = [
@@ -107,7 +119,7 @@ export default function Chatbot({ Close, handleClose, logindetail }) {
     const response_log = await axios.get("https://bot.uppist.xyz/logs", {
       params: {
         prompt: userMessage,
-        response: aiReply, // Make sure this matches your API key
+        response: aiReply,
         timestamp: formattedTime,
       },
     });

@@ -3,85 +3,64 @@
 import React, { useEffect, useState } from "react";
 import Buttons from "./Buttons";
 import styles from "./style.module.css";
-import table from "./Table.json";
 import copy from "../../assets/copyP.svg";
 import axios from "axios";
+
 export default function Table() {
   const [logs, setLogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  const fetchLogs = async () => {
-    try {
-      const response = await axios.get("https://bot.uppist.xyz/logs");
-      setLogs(response.data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Failed to fetch logs:", error);
-      setLoading(false);
-    }
-  };
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 15;
 
   useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const response = await axios.get("https://bot.uppist.xyz/logs");
+        setLogs(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Failed to fetch logs:", error);
+        setLoading(false);
+      }
+    };
+
     fetchLogs();
   }, []);
 
-  const SvgCopy = {
-    svg: copy,
-  };
+  const totalPages = Math.ceil(logs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentLogs = logs.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <div className={styles.table}>
       <div className={styles.tableHeader}>
-        <div className={`${styles.name} ${styles.firstName}`}>
+        <div className={styles.name}>
           <span>User Name</span>
-          {logs.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <span>{data.user_name}</span>
-            </div>
-          ))}
-        </div>
-        <div className={styles.name}>
           <span>Email Address</span>
-          {logs.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <span>{data.email}</span>
-            </div>
-          ))}
-        </div>
-        <div className={styles.name}>
           <span>Prompt Query</span>
-          {logs.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <span>{`"${data.prompt}"`}</span>
-            </div>
-          ))}
-        </div>
-        <div className={styles.name}>
           <span>AI Response</span>
-          {logs.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <span>{`"${data.response}"`}</span>
-            </div>
-          ))}
-        </div>
-        <div className={styles.name}>
           <span>Date/Time</span>
-          {logs.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <span>{data.timestamp}</span>
-            </div>
-          ))}
+          <span>Svg</span>
         </div>
 
-        <div className={`${styles.name} ${styles.svg}`}>
-          <span className={styles.svgtext}>Svg</span>
-          {table.map((data, index) => (
-            <div className={styles.tableRow} key={index}>
-              <img src={SvgCopy[data.img]} alt='' />
-            </div>
-          ))}
-        </div>
+        {currentLogs.map((data, index) => (
+          <div className={styles.name} key={index}>
+            <span>{data.user_name}</span>
+            <span>{data.email}</span>
+            <span>{data.prompt}</span>
+            <span>{data.response}</span>
+            <span>{data.timestamp}</span>
+            <img src={copy} alt='' />
+          </div>
+        ))}
       </div>
-      <Buttons />
+
+      {/* Pass pagination props */}
+      <Buttons
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        totalPages={totalPages}
+      />
     </div>
   );
 }
