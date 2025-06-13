@@ -407,9 +407,12 @@
 
   .chatbot {
     width: 85%;
-    height: 400px;
-    right: 30px;
-    bottom: 40px;
+    right: inherit;
+    bottom: inherit;
+  }
+
+  .texts {
+    height: 450px;
   }
 
   .send {
@@ -428,7 +431,6 @@
   .human span,
   .botText {
     padding: 10px 16px;
-    text-align: justify;
   }
 
   .bot {
