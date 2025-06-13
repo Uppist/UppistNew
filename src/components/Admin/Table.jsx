@@ -9,10 +9,7 @@ import copy from "../../assets/copyP.svg";
 export default function Table() {
   const nestedLogs = JSON.parse(localStorage.getItem("logs")) || [];
   const logs = nestedLogs[0] || []; // get the inner array
-  // console.log(logs[0]);
-
-  const name = JSON.parse(localStorage.getItem("user_name")) || [];
-  const email = JSON.parse(localStorage.getItem("email")) || [];
+  console.log(logs);
 
   const SvgCopy = {
     svg: copy,
@@ -22,17 +19,17 @@ export default function Table() {
       <div className={styles.tableHeader}>
         <div className={`${styles.name} ${styles.firstName}`}>
           <span>User Name</span>
-          {name.map((data, index) => (
+          {logs.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data}</span>
+              <span>{data.user_name}</span>
             </div>
           ))}
         </div>
         <div className={styles.name}>
           <span>Email Address</span>
-          {email.map((data, index) => (
+          {logs.map((data, index) => (
             <div className={styles.tableRow} key={index}>
-              <span>{data}</span>
+              <span>{data.email}</span>
             </div>
           ))}
         </div>
