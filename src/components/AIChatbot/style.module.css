@@ -409,6 +409,7 @@
     width: 85%;
     right: inherit;
     bottom: inherit;
+    height: 0px;
   }
 
   .texts {
