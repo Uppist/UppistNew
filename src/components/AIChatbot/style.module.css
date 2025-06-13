@@ -192,9 +192,9 @@
   scroll-behavior: smooth;
 }
 
-.texts::-webkit-scrollbar {
+/* .texts::-webkit-scrollbar {
   display: none;
-}
+} */
 
 .bot {
   display: flex;
@@ -413,7 +413,8 @@
   }
 
   .texts {
-    height: 450px;
+    height: 350px;
+    margin-bottom: 100px;
   }
 
   .send {
