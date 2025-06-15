@@ -85,7 +85,8 @@ export default function Chatbot({ Close, handleClose, logindetail }) {
       );
 
       const aiReply = response.data?.response?.content || "No response.";
-      const newSessionId = response.data?.session_id;
+      const newSessionId = response.data;
+      console.log("AI Reply:", newSessionId);
 
       if (newSessionId && !localStorage.getItem("session_id")) {
         localStorage.setItem("session_id", newSessionId);

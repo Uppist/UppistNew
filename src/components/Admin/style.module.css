@@ -43,16 +43,12 @@
   font-size: 14px;
   font-weight: 600;
   color: white;
+  cursor: pointer;
 }
 
 .table {
   border-radius: 16px;
   border: 1px solid hsla(218, 17%, 91%, 1);
-}
-
-.tableHeader {
-  /* display: grid; */
-  /* grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr; */
 }
 
 .tableRow {
@@ -68,15 +64,18 @@
 
 .name {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(5, 1fr);
+  border-bottom: 3px solid hsla(218, 20%, 98%, 1);
+  align-items: center;
 }
 
 .name img {
-  justify-self: end;
+  justify-self: center;
 }
 
 .name > span {
-  background-color: hsla(218, 20%, 98%, 1);
+  overflow-wrap: anywhere;
+  /* background-color: hsla(218, 20%, 98%, 1); */
   padding: 12px 24px;
   width: -webkit-fill-available;
   font-size: 12px;
@@ -84,18 +83,30 @@
   color: hsla(217, 24%, 27%, 1);
 }
 
-.firstName > span {
-  border-top-left-radius: 16px !important;
+.headerText {
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
 }
 
-.svgtext {
-  color: transparent !important;
-  background-color: hsla(218, 20%, 98%, 1);
-  border-top-right-radius: 16px;
+.headerText > span {
+  background-color: hsla(218, 20%, 98%, 1) !important;
+  padding: 12px 24px;
+  width: -webkit-fill-available;
+  font-size: 16px;
+  font-weight: 500;
+  color: hsla(217, 24%, 27%, 1);
+}
+
+.firstName {
+  border-top-left-radius: 16px !important;
 }
 
 .svg {
   align-items: end !important;
+
+  color: transparent !important;
+  background-color: hsla(218, 20%, 98%, 1);
+  border-top-right-radius: 16px;
 }
 
 .tableRow span,
@@ -137,13 +148,15 @@
   font-weight: 400;
   font-family: "Inter";
 }
-/* .pageButton {
-  padding: 6px 10px;
-  margin: 0 3px;
-  border: 1px solid #ccc;
+.pageButton {
+  border: none;
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter";
+  color: hsla(218, 15%, 65%, 1);
   background: white;
   cursor: pointer;
-} */
+}
 
 .pageButton:disabled {
   cursor: default;
@@ -156,4 +169,34 @@
   background-color: hsla(293, 89%, 92%, 1);
   border-radius: 8px;
   padding: 8px;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 16px;
+}
+
+.previous,
+.next {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid hsla(218, 16%, 84%, 1);
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Inter";
+  color: hsla(217, 24%, 27%, 1);
+  background-color: transparent;
+  box-shadow: 0px 2px 4px hsla(0, 0%, 0%, 0.04);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  .admin {
+    display: none;
+  }
 }

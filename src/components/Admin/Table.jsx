@@ -3,7 +3,6 @@
 import React, { useEffect, useState } from "react";
 import Buttons from "./Buttons";
 import styles from "./style.module.css";
-import copy from "../../assets/copyP.svg";
 import axios from "axios";
 
 export default function Table() {
@@ -34,23 +33,21 @@ export default function Table() {
   return (
     <div className={styles.table}>
       <div className={styles.tableHeader}>
-        <div className={styles.name}>
-          <span>User Name</span>
+        <div className={`${styles.name} ${styles.headerText}`}>
+          <span className={styles.firstName}>User Name</span>
           <span>Email Address</span>
           <span>Prompt Query</span>
           <span>AI Response</span>
           <span>Date/Time</span>
-          <span>Svg</span>
         </div>
 
         {currentLogs.map((data, index) => (
           <div className={styles.name} key={index}>
             <span>{data.user_name}</span>
             <span>{data.email}</span>
-            <span>{data.prompt}</span>
-            <span>{data.response}</span>
+            <span>{`"${data.prompt}"`}</span>
+            <span>{`"${data.response}"`}</span>
             <span>{data.timestamp}</span>
-            <img src={copy} alt='' />
           </div>
         ))}
       </div>

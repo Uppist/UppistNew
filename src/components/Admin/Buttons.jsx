@@ -1,9 +1,14 @@
 /** @format */
 
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./style.module.css";
+import back from "../../assets/back.svg";
+import forward from "../../assets/forward.svg";
 
 export default function Buttons({ currentPage, setCurrentPage, totalPages }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
   const getPaginationRange = () => {
     const delta = 1;
     const range = [];
@@ -56,6 +61,7 @@ export default function Buttons({ currentPage, setCurrentPage, totalPages }) {
           onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
         >
+          <img src={back} alt='' />
           Previous
         </button>
         <button
@@ -66,6 +72,7 @@ export default function Buttons({ currentPage, setCurrentPage, totalPages }) {
           disabled={currentPage === totalPages}
         >
           Next
+          <img src={forward} alt='' />
         </button>
       </div>
     </div>

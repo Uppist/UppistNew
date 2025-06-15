@@ -2,15 +2,14 @@
 
 import React from "react";
 import Table from "./Table";
-import uppist from "../../assets/uppist.png";
 import copy from "../../assets/copyWhite.svg";
 import styles from "./style.module.css";
+import Uppist from "../Ebook/Uppist";
 
 export default function Admin() {
   return (
     <div className={styles.admin}>
-      <img src={uppist} alt='' />
-
+      <Uppist />
       <div className={styles.content}>
         <div className={styles.header}>
           <h2>Chatbot Logs</h2>
