@@ -11,7 +11,7 @@
 }
 
 .uppist {
-  width: 149px;
+  width: auto;
   height: 43px;
 }
 
@@ -136,6 +136,7 @@ body::-webkit-scrollbar {
 
 a {
   text-decoration: none;
+  color: currentColor;
 }
 
 /*Nav bar styling*/
