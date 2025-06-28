@@ -2,9 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.css";
-import transaction from "./transaction.json";
 import time from "../../../../assets/Dashboard/time.svg";
-import right from "../../../../assets/Dashboard/icon.svg";
+import right from "../../../../assets/Dashboard/Icon.svg";
 import csv from "../../../../assets/Dashboard/csv.svg";
 import vector from "../../../../assets/Dashboard/Vector.svg";
 import copy from "../../../../assets/Dashboard/copy.svg";
