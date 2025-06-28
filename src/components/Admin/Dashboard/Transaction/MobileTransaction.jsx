@@ -54,9 +54,20 @@ export default function MobileTransaction({ title, logs }) {
     setIsMore((prevIndex) => (prevIndex === index ? null : index));
   }
 
-  function closeSeeMore() {
-    setIsMore(false);
-  }
+  const downloadCSV = () => {
+    const csvContent = logs
+      .map(
+        (data) =>
+          `${data.name},${data.email},${data.prompt},${data.response},${data.date}`
+      )
+      .join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "Logs.csv";
+    link.click();
+  };
 
   return (
     <div className={styles.mobiletransaction}>
@@ -81,7 +92,7 @@ export default function MobileTransaction({ title, logs }) {
               </div>
             </div>
           )}
-          <button className={styles.csv}>
+          <button className={styles.csv} onClick={downloadCSV}>
             <img src={csv} alt='' />
             Download CSV
           </button>
