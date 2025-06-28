@@ -19,7 +19,7 @@
   font-size: 24px;
   font-weight: 600;
   color: hsla(0, 0%, 17%, 0.8);
-  font-family: var(--font-inter);
+  font-family: "Inter";
 }
 
 .div {
@@ -35,7 +35,7 @@
   font-size: 14px;
   font-weight: 600;
   color: hsla(0, 0%, 17%, 0.8);
-  font-family: var(--font-inter);
+  font-family: "Inter";
   display: flex;
   align-items: center;
   gap: 8px;
@@ -48,7 +48,7 @@
   color: white;
   font-size: 14px;
   font-weight: 600;
-  font-family: var(--font-inter);
+  font-family: "Inter";
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@
   grid-template-columns: repeat(6, 1fr);
   border-bottom: 3px solid hsla(218, 20%, 98%, 1);
   align-items: center;
-  font-family: var(--font-inter);
+  font-family: "Inter";
   position: relative;
 }
 .svg {
@@ -176,7 +176,7 @@
   font-size: 14px;
   font-weight: 500;
   color: hsla(180, 23%, 15%, 0.8);
-  font-family: var(--font-inter);
+  font-family: "Inter";
   cursor: pointer;
 }
 
@@ -201,7 +201,7 @@
   background-color: white;
   font-size: 14px;
   font-weight: 400;
-  font-family: var(--font-inter);
+  font-family: "Inter";
   cursor: pointer;
   border-radius: 4px;
 }
@@ -243,7 +243,7 @@
     font-size: 22px;
     font-weight: 600;
     color: hsla(0, 0%, 17%, 0.8);
-    font-family: var(--font-inter);
+    font-family: "Inter";
     margin-top: 30px;
   }
 
@@ -289,12 +289,12 @@
     padding: 16px 0 0;
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-orange);
-    font-family: var(--font-inter);
+    color: hsla(293, 78%, 31%, 1);
+    font-family: "Inter";
   }
 
   .seeLess {
-    margin-top: 200px;
+    margin-top: 315px;
     border: 0;
     background-color: transparent;
     border-top: 1px solid hsla(180, 11%, 89%, 1);
@@ -304,8 +304,8 @@
     padding: 16px 0 0;
     font-size: 14px;
     font-weight: 600;
-    color: var(--color-orange);
-    font-family: var(--font-inter);
+    color: hsla(293, 78%, 31%, 1);
+    font-family: "Inter";
   }
 
   .header {
@@ -317,10 +317,10 @@
 
   .header div label,
   .more label {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
     color: hsla(0, 0%, 17%, 0.65);
-    font-family: var(--font-inter);
+    font-family: "Inter";
   }
 
   .header img {
@@ -329,10 +329,10 @@
 
   .header div span,
   .more span {
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 500;
-    color: var(--color-text);
-    font-family: var(--font-inter);
+    color: hsla(0, 0%, 17%, 0.8);
+    font-family: "Inter";
   }
 
   .dropdown {
