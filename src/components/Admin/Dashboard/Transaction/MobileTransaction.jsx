@@ -133,7 +133,7 @@ export default function MobileTransaction({ title, logs = [] }) {
 
       <div className={styles.table}>
         {filteredLogs.length === 0 ? (
-          <div className={styles.span2}>No transaction available</div>
+          <div className={styles.span2}>No data available</div>
         ) : (
           currentLogs.map((item, index) => {
             const dateOnly = item.timestamp?.slice(0, 10);
@@ -178,6 +178,9 @@ export default function MobileTransaction({ title, logs = [] }) {
 
                 {isMore === index && (
                   <div className={styles.moreInfo}>
+                    <div className={styles.more}>
+                      <label>Email Address:</label> <span>{item.email}</span>
+                    </div>
                     <div className={styles.more}>
                       <label>Prompt Query:</label> <span>{item.prompt}</span>
                     </div>

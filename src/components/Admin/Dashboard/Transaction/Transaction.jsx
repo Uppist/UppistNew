@@ -141,7 +141,7 @@ export default function Transaction({ logs = [], loading }) {
 
           <div className={styles.logs}>
             {filteredLogs.length === 0 ? (
-              <div className={styles.span2}>No transaction available</div>
+              <div className={styles.span2}>No data available</div>
             ) : (
               currentLogs.map((data, index) => (
                 <div className={styles.name} key={index}>
