@@ -113,6 +113,16 @@
   background-color: hsla(218, 20%, 98%, 1);
 }
 
+.logs {
+  height: 500px;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+}
+
+.logs::-webkit-scrollbar {
+  display: none;
+}
+
 .tableRow span,
 .tableRow img {
   padding: 16px 24px;
@@ -135,7 +145,7 @@
 
 .dropdownTime {
   position: absolute;
-  top: -90%;
+  top: -56%;
   left: 50%;
   right: 190px;
   bottom: 0;
@@ -254,7 +264,7 @@
   }
 
   .dropdownTime {
-    top: -85%;
+    top: -11%;
     right: 285px;
     left: 0;
   }
@@ -265,6 +275,13 @@
     align-items: center;
     gap: 24px;
     border: 0;
+    height: 450px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+  }
+
+  .table::-webkit-scrollbar {
+    display: none;
   }
 
   .container {

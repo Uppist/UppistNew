@@ -9,18 +9,14 @@ import vector from "../../../../assets/Dashboard/Vector.svg";
 import copy from "../../../../assets/Dashboard/copy.svg";
 import delte from "../../../../assets/Dashboard/delte.svg";
 import Buttons from "./Buttons";
-import axios from "axios";
 
-export default function Transaction({ logs, loading }) {
+export default function Transaction({ logs = [], loading }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 15;
-
-  const totalPages = Math.ceil(logs.length / itemsPerPage);
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const currentLogs = logs.slice(startIndex, startIndex + itemsPerPage);
   const [isClick, setIsClick] = useState(null);
   const [isTime, setIsTime] = useState(false);
   const [selectedTime, setSelectedTime] = useState("All Time");
+
+  const itemsPerPage = 15;
 
   const Time = [
     "Today",
@@ -32,29 +28,30 @@ export default function Transaction({ logs, loading }) {
     "All Time",
   ];
 
-  function handleClick(index) {
-    setIsClick(index);
-  }
+  // Reset to page 1 when logs or filter change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [logs, selectedTime]);
 
-  function closeClick() {
-    setIsClick(false);
-  }
+  const handleClick = (index) => setIsClick(index);
+  const closeClick = () => setIsClick(null);
 
-  function handleTime(item) {
+  const handleTime = (item) => {
     setSelectedTime(item);
-    setIsTime((prev) => !prev);
-  }
-  function closeTime() {
     setIsTime(false);
-  }
+  };
+
+  const closeTime = () => setIsTime(false);
 
   const downloadCSV = () => {
-    const csvContent = logs
-      .map(
-        (data) =>
-          `${data.name},${data.email},${data.prompt},${data.response},${data.date}`
-      )
-      .join("\n");
+    const csvContent =
+      "Name,Email,Prompt,Response,Date\n" +
+      logs
+        .map(
+          (data) =>
+            `"${data.user_name}","${data.email}","${data.prompt}","${data.response}","${data.timestamp}"`
+        )
+        .join("\n");
     const blob = new Blob([csvContent], { type: "text/csv" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -62,6 +59,46 @@ export default function Transaction({ logs, loading }) {
     link.download = "Logs.csv";
     link.click();
   };
+
+  function filterByTime(logs) {
+    const now = new Date();
+    return logs.filter((log) => {
+      const logDate = new Date(log.timestamp);
+      switch (selectedTime) {
+        case "Today":
+          return logDate.toDateString() === now.toDateString();
+        case "Yesterday":
+          const yest = new Date();
+          yest.setDate(now.getDate() - 1);
+          return logDate.toDateString() === yest.toDateString();
+        case "This week":
+          const firstDay = new Date(now);
+          firstDay.setDate(now.getDate() - now.getDay());
+          return logDate >= firstDay;
+        case "Last 7 days":
+          const last7 = new Date();
+          last7.setDate(now.getDate() - 6);
+          return logDate >= last7;
+        case "This month":
+          return (
+            logDate.getMonth() === now.getMonth() &&
+            logDate.getFullYear() === now.getFullYear()
+          );
+        case "Last 30 days":
+          const last30 = new Date();
+          last30.setDate(now.getDate() - 29);
+          return logDate >= last30;
+        default:
+          return true;
+      }
+    });
+  }
+
+  const filteredLogs = filterByTime(logs);
+  const totalPages = Math.ceil(filteredLogs.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentLogs = filteredLogs.slice(startIndex, startIndex + itemsPerPage);
+
   return (
     <div className={styles.transaction}>
       <div className={styles.log}>
@@ -99,38 +136,47 @@ export default function Transaction({ logs, loading }) {
             <span>Prompt Query</span>
             <span>AI Response</span>
             <span>Date/Time</span>
-            <span className={styles.svg}>Svg</span>
+            <span className={styles.svg}>Options</span>
           </div>
 
-          {currentLogs.map((data, index) => (
-            <div className={styles.name} key={index}>
-              <span>{data.user_name}</span>
-              <span>{data.email}</span>
-              <span>{`"${data.prompt}"`}</span>
-              <span>{`"${data.response}"`}</span>
-              <span>{data.timestamp}</span>
-              <img
-                src={vector}
-                alt=''
-                onClick={() => handleClick(index)}
-              />{" "}
-              {isClick === index && (
-                <div className={styles.dropdown} onClick={closeClick}>
-                  <div className={styles.overlay} onClick={closeClick}></div>
-                  <div className={styles.copy}>
-                    <span>
-                      <img src={copy} alt='' />
-                      Copy
-                    </span>
-                    <span>
-                      <img src={delte} alt='' />
-                      Delete
-                    </span>
-                  </div>
+          <div className={styles.logs}>
+            {filteredLogs.length === 0 ? (
+              <div className={styles.span2}>No transaction available</div>
+            ) : (
+              currentLogs.map((data, index) => (
+                <div className={styles.name} key={index}>
+                  <span>{data.user_name}</span>
+                  <span>{data.email}</span>
+                  <span className={styles.prompt}>{data.prompt}</span>
+                  <span className={styles.response}>{data.response}</span>
+                  <span>{new Date(data.timestamp).toLocaleString()}</span>
+                  <img
+                    src={vector}
+                    alt='options'
+                    onClick={() => handleClick(index)}
+                  />
+                  {/* {isClick === index && (
+                    <div className={styles.dropdown} onClick={closeClick}>
+                      <div
+                        className={styles.overlay}
+                        onClick={closeClick}
+                      ></div>
+                      <div className={styles.copy}>
+                        <span>
+                          <img src={copy} alt='copy' />
+                          Copy
+                        </span>
+                        <span>
+                          <img src={delte} alt='delete' />
+                          Delete
+                        </span>
+                      </div>
+                    </div>
+                  )} */}
                 </div>
-              )}
-            </div>
-          ))}
+              ))
+            )}
+          </div>
         </div>
 
         <Buttons
